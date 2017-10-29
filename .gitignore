@@ -1,0 +1,16 @@
+# Some random files
+*.bak
+db.sqlite3
+secret.py
+*.jpg
+*.png
+
+# These are just tests
+blog
+polls
+
+# Some other possible files
+*.log
+*.pot
+*.pyc
+__pycache__/

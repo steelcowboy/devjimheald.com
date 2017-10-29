@@ -1,0 +1,171 @@
+{% load static %}
+<html>
+
+<head>
+  <title>
+  Resume -- Jim Heald
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet" type='text/css'>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{% static "resume/style.css" %}" /> 
+</head>
+
+<body>
+  <div id="main">
+    <div class="header">
+      <h2 style="text-align: center;">JIM HEALD</h2>
+
+      <hr>
+
+      <span class="header-info">
+        <p><i class="fa fa-github" aria-hidden="true"></i> https://github.com/steelcowboy</p>
+      </span>
+      <span class="header-info">
+        <p><i class="fa fa-phone" aria-hidden="true"></i> (510) 303-1458</p>
+      </span>
+      <span class="header-info">
+        <p><i class="fa fa-envelope" aria-hidden="true"></i> james.r.heald@gmail.com</p>
+      </span>
+    </div>
+    
+    <div id="content">
+      
+    <!-- Experience Section -->
+      <div id="experience" class="section">
+        <h3 class="section-header"><i class="fa fa-code"></i> Projects</h3>
+
+        {% for experience in experiences %}
+            <div class="item-header">
+                <span class="experience title">{{ experience.name }}</span>
+                {% if experience.ongoing %}
+                    <span class="experience duration">{{ experience.start_date|date:"M Y" }} - Present</span>
+                {% else %}
+                    <span class="experience duration">{{ experience.start_date|date:"M Y" }} - {{ experience.start_date|date:"M Y" }}</span>
+                {% endif %}
+            </div>
+
+            <div class="item-body">
+                <ul>
+                {% for point in experience.experiencepoint_set.all %} 
+                    <li>
+                        {{ point.text }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+      </div>
+      
+
+    <!-- Employment Section -->
+      <div id="employment" class="section">
+        <h3 class="section-header"><i class="fa fa-briefcase"></i> Employment</h3>
+        {% for employment in employments %}
+            <div class="item-header">
+            <span class="employment title">{{ employment.name }}</span>
+            {% if employment.ongoing %}
+                <span class="employment duration">{{ employment.start_date|date:"M Y" }} - Present</span>
+            {% else %}
+                <span class="employment duration">{{ employment.start_date|date:"M Y" }} - {{ employment.end_date|date:"M Y" }}</span>
+            {% endif %}
+            </div>
+
+            <div class="item-body">
+                <ul>
+                {% for point in employment.employmentpoint_set.all %} 
+                    <li>
+                        {{ point.text }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+      </div>
+      
+
+    <!-- Education Section -->
+      <div id="education" class="section">
+        <h3 class="section-header"><i class="fa fa-graduation-cap"></i> Education</h3>
+
+        {% for education in educations %}
+            <div class="item-header">
+                <span class="education title">{{ education.school }}</span>
+                {% if education.ongoing %}
+                    <span class="education duration">{{ education.start_date|date:"M Y" }} - Present</span>
+                {% else %}
+                    <span class="education duration">{{ education.start_date|date:"M Y" }} - {{ education.start_date|date:"M Y" }}</span>
+                {% endif %}
+            </div>
+            
+            <!-- Education is weird in that the top and bottom line behave the same way, so might as well just reuse the title
+                and duration classes -->
+            <div class="item-header">
+                <span class="education title">{{ education.degree }}, GPA {{ education.gpa }}</span>
+                <span class="education duration">{{ education.graduation|date:"M Y" }} Graduation</span>
+            </div>
+
+            <div class="item-body">
+                <ul>
+                {% for point in education.educationpoint_set.all %} 
+                    <li>
+                        <i>{{ point.keyword }}:</i> {{ point.text|linebreaksbr }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+
+        {% endfor %}
+      </div>
+      
+
+    <!-- Affiliations Section -->
+      <div id="affiliations" class="section">
+        <h3 class="section-header"><i class="fa fa-users"></i> Affiliations</h3>
+        {% for affiliation in affiliations %}
+            <div class="item-header">
+            <span class="affiliation title">{{ affiliation.name }}</span>
+            {% if affiliation.ongoing %}
+                <span class="affiliation duration">{{ affiliation.start_date|date:"M Y" }} - Present</span>
+            {% else %}
+                <span class="affiliation duration">{{ affiliation.start_date|date:"M Y" }} - {{ affiliation.start_date|date:"M Y" }}</span>
+            {% endif %}
+            </div>
+
+            <div class="item-body">
+                <ul>
+                {% for point in affiliation.affiliationpoint_set.all %} 
+                    <li>
+                        {{ point.text }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+      </div>
+      
+
+    <!-- Skills Section -->
+      <div id="skills" class="section">
+        <h3 class="section-header"><i class="fa fa-magic"></i> Skills and Achievements</h3>
+        
+        <div class="item-body">
+            <ul>
+            {% for skill in skills %}
+                <li>
+                    <i>{{ skill.keyword }}:</i> {{ skill.text }}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+      </div>
+
+      
+    </div>
+    
+  </div>
+</body>
+
+</html>
