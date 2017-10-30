@@ -9,6 +9,9 @@ secret.py
 blog
 polls
 
+# Don't track this, I'll sync it manually
+media
+
 # Some other possible files
 *.log
 *.pot
