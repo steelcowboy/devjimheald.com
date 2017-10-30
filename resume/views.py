@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Skill, Experience, Education, Affiliation, Employment
+from .models import Skill, Project, Education, Affiliation, Employment
 
 # Create your views here.
 def index(request):
@@ -7,7 +7,7 @@ def index(request):
 
 def printable(request):
     skills = Skill.objects.all() 
-    experiences = Experience.objects.all()
+    experiences = Project.objects.all()
     educations = Education.objects.all()
     affiliations = Affiliation.objects.all()
     employments = Employment.objects.all()

@@ -3,12 +3,12 @@ from django.contrib import admin
 from .models import * 
 
 # Inlines for related models
-class ExperienceInline(SortableStackedInline):
-    model = ExperiencePoint
+class ProjectInline(SortableStackedInline):
+    model = ProjectPoint
 
-class ExperienceAdmin(NonSortableParentAdmin):
+class ProjectAdmin(NonSortableParentAdmin):
     inlines = [
-        ExperienceInline,
+        ProjectInline,
     ]
 
 class EducationInline(SortableStackedInline):
@@ -37,7 +37,7 @@ class EmploymentAdmin(NonSortableParentAdmin):
 
 # Register your models here.
 admin.site.register(Skill)
-admin.site.register(Experience, ExperienceAdmin)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Affiliation, AffiliationAdmin)
 admin.site.register(Employment, EmploymentAdmin)
