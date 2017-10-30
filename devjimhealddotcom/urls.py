@@ -19,7 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about/', include('about.urls')),
-    url(r'^blog/', include('blog.urls')),
     url(r'^resume/', include('resume.urls')),
-    url(r'^projects/', include('projects.urls')),
+
+    url(r'^blog/', include('zinnia.urls')),
+    url(r'^comments/', include('django_comments.urls')),
 ]

@@ -42,6 +42,13 @@ INSTALLED_APPS = [
     'resume.apps.ResumeConfig',
     'about.apps.AboutConfig',
     'blog.apps.BlogConfig',
+
+    # Zinnia apps
+    'django.contrib.sites',
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'zinnia.context_processors.version',  
             ],
         },
     },
@@ -136,3 +145,6 @@ STATIC_URL = '/assets/'
 STATIC_ROOT = secret.STATIC_ROOT
 MEDIA_ROOT = secret.MEDIA_ROOT
 MEDIA_URL = '/media/'
+
+# Not sure what this is for
+SITE_ID = 1
