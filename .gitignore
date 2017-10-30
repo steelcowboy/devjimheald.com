@@ -6,7 +6,6 @@ secret.py
 *.png
 
 # These are just tests
-blog
 polls
 
 # Don't track this, I'll sync it manually
