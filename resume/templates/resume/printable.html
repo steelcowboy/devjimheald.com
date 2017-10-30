@@ -33,22 +33,22 @@
     <div id="content">
       
     <!-- Experience Section -->
-      <div id="experience" class="section">
+      <div id="project" class="section">
         <h3 class="section-header"><i class="fa fa-code"></i> Projects</h3>
 
-        {% for experience in experiences %}
+        {% for project in projects %}
             <div class="item-header">
-                <span class="experience title">{{ experience.name }}</span>
-                {% if experience.ongoing %}
-                    <span class="experience duration">{{ experience.start_date|date:"M Y" }} - Present</span>
+                <span class="project title">{{ project.name }}</span>
+                {% if project.ongoing %}
+                    <span class="project duration">{{ project.start_date|date:"M Y" }} - Present</span>
                 {% else %}
-                    <span class="experience duration">{{ experience.start_date|date:"M Y" }} - {{ experience.start_date|date:"M Y" }}</span>
+                    <span class="project duration">{{ project.start_date|date:"M Y" }} - {{ project.start_date|date:"M Y" }}</span>
                 {% endif %}
             </div>
 
             <div class="item-body">
                 <ul>
-                {% for point in experience.experiencepoint_set.all %} 
+                {% for point in project.projectpoint_set.all %} 
                     <li>
                         {{ point.text }}
                     </li>

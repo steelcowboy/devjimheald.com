@@ -7,14 +7,14 @@ def index(request):
 
 def printable(request):
     skills = Skill.objects.all() 
-    experiences = Project.objects.all()
+    projects = Project.objects.all()
     educations = Education.objects.all()
     affiliations = Affiliation.objects.all()
     employments = Employment.objects.all()
 
     context = {
             'skills': skills, 
-            'experiences': experiences, 
+            'projects': projects, 
             'educations': educations, 
             'affiliations': affiliations,
             'employments': employments
