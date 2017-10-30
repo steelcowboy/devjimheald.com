@@ -34,18 +34,18 @@ class Skill(models.Model):
     def __str__(self):
         return self.keyword 
 
-class Experience(Event):
-    name = models.CharField('Experience Name', max_length=50)
-    exp_type = models.CharField('Experience Type', max_length=20)
+class Project(Event):
+    name = models.CharField('Project Name', max_length=50)
+    exp_type = models.CharField('Project Type', max_length=20)
 
     def __str__(self):
         return self.name
 
-class ExperiencePoint(EventPoint):
-    experience = SortableForeignKey(Experience, null=True)
+class ProjectPoint(EventPoint):
+    experience = SortableForeignKey(Project, null=True)
     
-    class Meta(EventPoint.Meta):
-        verbose_name_plural = "Experience Points"
+    class Project(EventPoint.Meta):
+        verbose_name_plural = "Project Points"
 
 class Education(Event):
     school = models.CharField('Institution', max_length=100)
