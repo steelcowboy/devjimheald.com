@@ -1,6 +1,9 @@
 from django.db import models
+
 from adminsortable.models import SortableMixin
 from adminsortable.fields import SortableForeignKey
+
+from taggit.managers import TaggableManager
 
 # Base models
 class Event(models.Model):
@@ -8,6 +11,8 @@ class Event(models.Model):
     start_date = models.DateField('Start Time')
     ongoing = models.BooleanField('Ongoing')
     end_date = models.DateField('End Time', null=True, blank=True)
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ['-start_date']
@@ -23,6 +28,8 @@ class EventPoint(SortableMixin):
         abstract = True
 
     point_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+
+    tags = TaggableManager()
 
 # Real models
 class Skill(models.Model):

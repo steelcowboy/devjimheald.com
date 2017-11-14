@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'adminsortable',
     'resume.apps.ResumeConfig',
     'about.apps.AboutConfig',
-    'blog.apps.BlogConfig',
 
     # Zinnia apps
     'django.contrib.sites',
@@ -49,6 +48,9 @@ INSTALLED_APPS = [
     'mptt',
     'tagging',
     'zinnia',
+
+    # For Resume
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +150,6 @@ MEDIA_URL = '/media/'
 
 # Not sure what this is for
 SITE_ID = 1
+
+# Taggit
+TAGGIT_CASE_INSENSITIVE = True
