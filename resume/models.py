@@ -49,7 +49,7 @@ class Project(Event):
         return self.name
 
 class ProjectPoint(EventPoint):
-    experience = SortableForeignKey(Project, null=True)
+    experience = SortableForeignKey(Project, null=True, on_delete=models.CASCADE)
     
     class Project(EventPoint.Meta):
         verbose_name_plural = "Project Points"
@@ -64,7 +64,7 @@ class Education(Event):
         return self.school
 
 class EducationPoint(EventPoint):
-    education = SortableForeignKey(Education, null=True)
+    education = SortableForeignKey(Education, null=True, on_delete=models.CASCADE)
     text = models.TextField('Text')
     keyword = models.CharField('Keyword', max_length=50, null=True)
 
@@ -78,7 +78,7 @@ class Affiliation(Event):
         return self.name
 
 class AffiliationPoint(EventPoint):
-    affiliation = SortableForeignKey(Affiliation, null=True)
+    affiliation = SortableForeignKey(Affiliation, null=True, on_delete=models.CASCADE)
 
     class Meta(EventPoint.Meta):
         verbose_name_plural = "Affiliation Points"
@@ -90,7 +90,7 @@ class Employment(Event):
         return self.name
 
 class EmploymentPoint(EventPoint):
-    employment = SortableForeignKey(Employment, null=True)
+    employment = SortableForeignKey(Employment, null=True, on_delete=models.CASCADE)
 
     class Meta(EventPoint.Meta):
         verbose_name_plural = "Employment Points"
