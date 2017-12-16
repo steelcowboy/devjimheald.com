@@ -153,3 +153,6 @@ SITE_ID = 1
 
 # Taggit
 TAGGIT_CASE_INSENSITIVE = True
+
+# Zinnia
+ZINNIA_MARKUP_LANGUAGE = 'markdown'
