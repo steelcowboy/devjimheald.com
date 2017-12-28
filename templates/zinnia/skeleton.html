@@ -31,7 +31,20 @@
     <![endif]-->
     {% block link %}{% endblock link %}
     {% block script %}{% endblock script %}
+
+  <style>
+  html, body {
+    background-image: url("/media/rock_background.jpg");
+    background-color: #cccccc;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+  }
+  </style>
+
   </head>
+
+  
 
   <body class="zinnia {% block theme-class %}default{% endblock theme-class %} {% block color-class %}blue{% endblock color-class %} {% block sidebar-class %}right-sidebar{% endblock sidebar-class %} {% block body-class %}{% endblock body-class %}">
     <div class="container">
