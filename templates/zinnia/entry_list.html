@@ -95,8 +95,12 @@
 <div class="row">
 {% for object in object_list %}
   <div class="col-sm-12 col-md-6">
-  {% zinnia_loop_template object.content_template as template %}
-  {% include template with object_content=object.html_preview continue_reading=1 %}
+    <div class="card">
+      <div class="card-body">
+      {% zinnia_loop_template object.content_template as template %}
+      {% include template with object_content=object.html_preview continue_reading=1 %}
+      </div>
+    </div>
   </div>
 
 {% empty %}
