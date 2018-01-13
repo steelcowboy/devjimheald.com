@@ -41,34 +41,42 @@
   <body class="zinnia {% block theme-class %}default{% endblock theme-class %} {% block color-class %}blue{% endblock color-class %} {% block sidebar-class %}right-sidebar{% endblock sidebar-class %} {% block body-class %}{% endblock body-class %}">
     <header id="header" role="banner">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'zinnia:entry_archive_index' %}">/dev/jimheald</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+        <!--<a class="navbar-brand" href="{% url 'zinnia:entry_archive_index' %}">/dev/jimheald</a>-->
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+          <!--<span class="navbar-toggler-icon"></span>-->
+        <!--</button>-->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+          <!--<ul class="navbar-nav mr-auto">-->
 
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}"></a>
-            </li>
+            <!--<li class="nav-item">-->
+              <!--<a class="nav-link" href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}"></a>-->
+            <!--</li>-->
 
-            <li class="nav-item">
-              <a class="nav-link" href="/" title="Home"></a>
-            </li>
+            <!--<li class="nav-item">-->
+              <!--<a class="nav-link" href="/" title="Home"></a>-->
+            <!--</li>-->
 
-          </ul>
+          <!--</ul>-->
 
-          <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'zinnia:entry_search' %}">
-            <p>
-            <input type="text" name="pattern" class="form-control mr-sm-2" type="search" placeholder="{% trans "Keywords..." %}" {% if pattern %}value="{{ pattern }}"{% endif %} />
-            <input type="submit" class="btn btn-outline-success my-2 my-sm-0 submitbutton" value="OK" />
-            </p>
-          </form>
-        </div>
+          <!--<form class="form-inline my-2 my-lg-0" method="get" action="{% url 'zinnia:entry_search' %}">-->
+            <!--<p>-->
+            <!--<input type="text" name="pattern" class="form-control mr-sm-2" type="search" placeholder="{% trans "Keywords..." %}" {% if pattern %}value="{{ pattern }}"{% endif %} />-->
+            <!--<input type="submit" class="btn btn-outline-success my-2 my-sm-0 submitbutton" value="OK" />-->
+            <!--</p>-->
+          <!--</form>-->
+        <!--</div>-->
 
-      </nav>
+      <!--</nav>-->
+
+        <nav class="navbar nav-blue">
+            <div class="container nav-blue">
+              <a class="navbar-brand" href="/blog">/dev/jimheald</a>
+            </div>
+        </nav>
+
+
     </header>
 
     <div class="container">

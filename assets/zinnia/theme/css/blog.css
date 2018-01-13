@@ -6,8 +6,23 @@ html, body {
   background-position:center;
 }
 
+.navbar-brand {
+  text-align: center;
+  width: 100%;
+  color: #ffffff;
+}
+
 .container {
   background-color: #ffffff;
+}
+
+.nav-blue {
+  background-color: #1D3461;
+}
+
+.intro {
+  padding: 5px;
+  text-align: center;
 }
 
 .hentry {
