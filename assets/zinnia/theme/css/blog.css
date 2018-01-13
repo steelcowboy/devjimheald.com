@@ -20,8 +20,11 @@ html, body {
   background-color: #1D3461;
 }
 
-.intro {
+.content {
   padding: 5px;
+}
+
+.intro {
   text-align: center;
 }
 
