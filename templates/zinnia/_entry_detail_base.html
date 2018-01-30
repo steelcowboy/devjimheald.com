@@ -54,7 +54,7 @@
     {% block entry-lead %}
     {% if not continue_reading and object.lead %}
     <div class="entry-summary" itemprop="headline">
-      {{ object.html_lead|safe }}
+        <p class="lead">{{ object.html_lead|safe }}</p>
     </div>
     {% endif %}
     {% endblock entry-lead %}
