@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'adminsortable',
     'resume.apps.ResumeConfig',
     'about.apps.AboutConfig',
+    'music.apps.MusicConfig',
 
     # Zinnia apps
     'django.contrib.sites',
@@ -51,6 +52,9 @@ INSTALLED_APPS = [
 
     # For Resume
     'taggit',
+
+    # For Music
+    'django_countries',
 ]
 
 MIDDLEWARE = [
