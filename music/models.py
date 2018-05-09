@@ -58,5 +58,5 @@ class Album(Music):
 
 class Song(Music):
     fantastic_find = models.BooleanField('Fantastic Find')
-    features = TaggableManager('Features', through=FeatureThru)
+    features = TaggableManager('Features', through=FeatureThru, blank=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
