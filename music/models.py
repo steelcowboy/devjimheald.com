@@ -32,6 +32,7 @@ class Artist(models.Model):
     country = CountryField(blank=True, null=True)
     genres = TaggableManager('Genres', through=GenreThru)
     comments = models.TextField('Comments', max_length=500, blank=True, null=True)
+    todo = models.BooleanField('TODO')
 
     def __str__(self):
         return f"{self.name}"
