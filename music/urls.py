@@ -6,4 +6,5 @@ app_name = 'music'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('todo', views.todo, name='todo'),
 ]

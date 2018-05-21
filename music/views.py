@@ -9,3 +9,12 @@ def index(request):
     }
 
     return render(request, 'music/index.html', context=context)
+
+def todo(request):
+    albums = models.Album.objects.filter(todo=True)
+    context = {
+        'albums': albums,
+    }
+
+    return render(request, 'music/index.html', context=context)
+
