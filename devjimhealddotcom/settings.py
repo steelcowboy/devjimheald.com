@@ -32,6 +32,9 @@ ALLOWED_HOSTS = secret.ALLOWED_HOSTS
 # Application definition
 
 INSTALLED_APPS = [
+    # Needs to be before contrib.admin
+    # 'djangocms_admin_style',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +58,11 @@ INSTALLED_APPS = [
 
     # For Music
     'django_countries',
+
+    # For Django-CMS
+    # 'cms',
+    # 'menus',
+    # 'treebeard',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+        ('en', 'English')
+]
 
 TIME_ZONE = 'America/Los_Angeles'
 USE_I18N = True
