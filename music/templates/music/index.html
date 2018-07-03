@@ -43,7 +43,7 @@
       window.onSpotifyWebPlaybackSDKReady = () => {
         const token = '{{ spotify_access_token }}';
         const player = new Spotify.Player({
-          name: 'Web Playback SDK Quick Start Player',
+          name: 'DevJim Music Manager',
           getOAuthToken: cb => { cb(token); }
         });
 
