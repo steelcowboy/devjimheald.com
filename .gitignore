@@ -17,3 +17,6 @@ media
 *.pyc
 __pycache__/
 venv/
+
+# Spotify info
+music/spotify.py
