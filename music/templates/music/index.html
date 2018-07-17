@@ -39,22 +39,24 @@
   </head>
 
   <body>
-    <h2>What's playing?</h2>
-    <p id="thisiswhatsplaying"></p>
+    <div class="container">
+      <h2>What's playing?</h2>
+      <p id="thisiswhatsplaying"></p>
 
-    <form id="search-form">
-      <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
-      <input type="submit" id="search" class="btn btn-primary" value="Search" />
-    </form>
+      <form id="search-form">
+        <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+        <input type="submit" id="search" class="btn btn-primary" value="Search" />
+      </form>
 
-    <button type="button" class="btn btn-primary" id="prev">Previous</button>
-    <button type="button" class="btn btn-primary" id="toggle">Toggle</button>
-    <button type="button" class="btn btn-primary" id="next">Next</button>
+      <button type="button" class="btn btn-primary" id="prev">Previous</button>
+      <button type="button" class="btn btn-primary" id="toggle">Toggle</button>
+      <button type="button" class="btn btn-primary" id="next">Next</button>
 
-    {% for album in albums %}
-      <p>{{ album.title }} - {{ album.artist }} - {{ album.release_date.year }}</p>
-    {% endfor %}
+      {% for album in albums %}
+        <p>{{ album.title }} - {{ album.artist }} - {{ album.release_date.year }}</p>
+      {% endfor %}
 
+    </div>
   </body>
 
 </html>
