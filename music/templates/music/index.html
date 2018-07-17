@@ -31,45 +31,30 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous">
     </script>
+
+    <!-- Spotify -->
+    <script>var TOKEN = "{{ spotify_access_token }}";</script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="text/javascript" src="{% static "music/spotify-interface.js" %}"></script>
   </head>
 
   <body>
+    <h2>What's playing?</h2>
+    <p id="thisiswhatsplaying"></p>
+
+    <form id="search-form">
+      <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+      <input type="submit" id="search" class="btn btn-primary" value="Search" />
+    </form>
+
+    <button type="button" class="btn btn-primary" id="prev">Previous</button>
+    <button type="button" class="btn btn-primary" id="toggle">Toggle</button>
+    <button type="button" class="btn btn-primary" id="next">Next</button>
+
     {% for album in albums %}
       <p>{{ album.title }} - {{ album.artist }} - {{ album.release_date.year }}</p>
     {% endfor %}
 
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script type="text/javascript">
-      window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = '{{ spotify_access_token }}';
-        const player = new Spotify.Player({
-          name: 'DevJim Music Manager',
-          getOAuthToken: cb => { cb(token); }
-        });
-
-        // Error handling
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-        // Playback status updates
-        player.addListener('player_state_changed', state => { console.log(state); });
-
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-          console.log('Ready with Device ID', device_id);
-        });
-
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-          console.log('Device ID has gone offline', device_id);
-        });
-
-        // Connect to the player!
-        player.connect();
-      };
-    </script>
   </body>
 
 </html>
