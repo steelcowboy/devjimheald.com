@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', include('about.urls')),
     path('resume/', include('resume.urls')),
+    path('search/', include('searchengine.urls')),
 
     path('blog/', include('zinnia.urls')),
     path('comments/', include('django_comments.urls')),

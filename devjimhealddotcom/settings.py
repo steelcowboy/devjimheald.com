@@ -171,3 +171,6 @@ TAGGIT_CASE_INSENSITIVE = True
 
 # Zinnia
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
+
+# Session settings
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
