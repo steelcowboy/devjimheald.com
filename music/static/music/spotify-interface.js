@@ -1,3 +1,32 @@
+function getAlbumHTML(album) {
+  artist = album.artists[0].name;
+  name = album.name;
+  date = album.release_date;
+  album_id = album.id;
+
+  return `
+    <h3 id="${album_id}" onclick="playAlbum(this.id)">${name}</h3>
+    <span>
+      <p>
+        ${artist}
+      </p>
+      <p>
+        ${date}
+      </p>
+    </span>
+  `;
+}
+
+function playAlbum(id) {
+  payload = {
+    "context_uri": `spotify:album:${id}`,      
+    "offset": {
+      "position": 0
+    }
+  };
+  console.log(payload);
+}
+
 function fetchTracks(albumId, callback) {
   $.ajax({
     url: 'https://api.spotify.com/v1/albums/' + albumId,
@@ -11,23 +40,24 @@ function fetchTracks(albumId, callback) {
 };
 
 function searchAlbums (query) {
-  $.ajax({
-    url: 'https://api.spotify.com/v1/search',
-    headers: {
-      'Authorization': 'Bearer ' + TOKEN
-    },
-    data: {
-      q: query,
-      type: 'album',
-      limit: 10
-    },
-    success: function (response) {
-      console.log(response);  
-    },
-    error: function(xhr, textStatus, errorCode) {
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: 'https://api.spotify.com/v1/search',
+      headers: {
+        'Authorization': 'Bearer ' + TOKEN
+      },
+      data: {
+        q: query,
+        type: 'album',
+        limit: 10
+      }
+    })
+    .done(function (response) {
+      resolve(response.albums.items);
+    }) 
+    .fail(function (xhr) {
       console.log(xhr);
-      console.log(textStatus);
-    }
+    });
   });
 };
 
@@ -86,9 +116,14 @@ async function waitUntilUserHasSelectedPlayer (player) {
     );
   });
 
-  $("#search-form").submit(function(event) {
+  $("#search-form").submit(async function(event) {
     event.preventDefault();
-    searchAlbums($("#query").val());
+    $("#searchResults").html("");
+    let albums = await searchAlbums($("#query").val());
+    $.each(albums, function (i, album) {
+      html = getAlbumHTML(album);
+      $("#searchResults").append(html);
+    });
   });
 
   let connected = await player.connect();
