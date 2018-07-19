@@ -6,6 +6,7 @@ import ipaddress
 
 
 INT_NET = ipaddress.IPv6Network(secret.NET) 
+INT_NET4 = ipaddress.IPv4Network(secret.NET_IPV4)
 
 INT_SEARCH_URL = secret.SEARCH
 ALT_URL = secret.ALT 
@@ -17,11 +18,7 @@ def search(request):
     
     client_ip = ipaddress.ip_address(cip)
 
-    # My internal network will certainly be IPv6, so this isn't it
-    if type(client_ip) == ipaddress.IPv4Address:
-        return redirect(f"{ALT_URL}{params}")
+    if client_ip in INT_NET4 or client_ip in INT_NET:
+        return redirect(f"{INT_SEARCH_URL}{params}")
     else:
-        if client_ip in FB_IP:
-            return redirect(f"{INT_SEARCH_URL}{params}")
-        else:
-            return redirect(f"{ALT_URL}{params}")
+        return redirect(f"{ALT_URL}{params}")
