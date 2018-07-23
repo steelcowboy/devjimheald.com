@@ -38,14 +38,16 @@ def login(request):
     redirect_uri = spotify.REDIRECT_URI 
     state = "whattf"
     scopes = [
-        "playlist-modify-private",
+        "user-read-private", 
+        "user-read-birthdate",  # Needed to confirm subscription
         "user-read-currently-playing", 
-        "user-modify-playback-state",
         "streaming",
-        "playlist-read-private",
-        "user-library-modify",
         "user-library-read",
+        "user-library-modify",
         "user-read-playback-state",
+        "user-modify-playback-state",
+        "playlist-read-private",
+        "playlist-modify-private",
         "playlist-modify-public",
     ]
     scopes_str = ' '.join(scopes)
