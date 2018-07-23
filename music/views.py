@@ -38,10 +38,14 @@ def login(request):
     redirect_uri = spotify.REDIRECT_URI 
     state = "whattf"
     scopes = [
-        "user-read-private", 
-        "user-read-birthdate",  # Needed to confirm subscription
-        "user-read-currently-playing", 
+        # Required scopes
         "streaming",
+        "user-read-birthdate",
+        "user-read-email",
+        "user-read-private", 
+
+        # For the endpoints I want
+        "user-read-currently-playing", 
         "user-library-read",
         "user-library-modify",
         "user-read-playback-state",
