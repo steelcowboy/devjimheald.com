@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.container {
+  overflow-y: scroll;
+  height: 90%;
+}
+
+footer {
+  position:static;
+  bottom: 0;
+  height: 10%;
+  background-color:yellow;
+}

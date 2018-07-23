@@ -35,8 +35,12 @@
     <!-- Spotify -->
     <script>var TOKEN = "{{ spotify_access_token }}";</script>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="text/javascript" src="{% static "music/html-helpers.js" %}"></script>
     <script type="text/javascript" src="{% static "music/spotify-helpers.js" %}"></script>
     <script type="text/javascript" src="{% static "music/spotify-interface.js" %}"></script>
+
+    <!-- Finally my CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "music/index.css" %}" />
   </head>
 
   <body>
@@ -52,15 +56,21 @@
       <div id="searchResults">
       </div>
 
-      <button type="button" class="btn btn-primary" id="prev">Previous</button>
-      <button type="button" class="btn btn-primary" id="toggle">Toggle</button>
-      <button type="button" class="btn btn-primary" id="next">Next</button>
-
       {% for album in albums %}
         <p>{{ album.title }} - {{ album.artist }} - {{ album.release_date.year }}</p>
       {% endfor %}
 
     </div>
   </body>
+
+  <footer>
+    <div class="container">
+      <div class="d-flex justify-content-around">
+        <i class="fa fa-backward fa-3x" id="prev"></i>
+        <i class="fa fa-play-circle fa-4x" id="toggle"></i>
+        <i class="fa fa-forward fa-3x" id="next"></i>
+      </div>
+    </div>
+  </footer>
 
 </html>

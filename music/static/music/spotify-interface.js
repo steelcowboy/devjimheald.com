@@ -25,6 +25,8 @@ async function waitUntilUserHasSelectedPlayer (player) {
 };
 
 (async () => {
+  let paused = false;
+
   const { Player } = await waitForSpotifyWebPlaybackSDKToLoad();
   const token = TOKEN;
   const player = new Player({
@@ -53,14 +55,18 @@ async function waitUntilUserHasSelectedPlayer (player) {
     );
   });
 
+  player.on("ready", async ({ device_id }) => {
+    setPlayer(device_id);
+    let state = await waitUntilUserHasSelectedPlayer(player);
+    paused = state.paused;
+    toggleIcon(paused);
+  });
+
   $("#search-form").submit(async function(event) {
     event.preventDefault();
     $("#searchResults").html("");
-    let albums = await searchAlbums($("#query").val());
-    $.each(albums, function (i, album) {
-      html = getAlbumHTML(album);
-      $("#searchResults").append(html);
-    });
+    let response = await search($("#query").val());
+    buildResults(response);  
   });
 
   let connected = await player.connect();
@@ -88,12 +94,14 @@ async function waitUntilUserHasSelectedPlayer (player) {
 
   $("#next").click(async function() {
     await player.nextTrack();
-    console.log('Set to previous next!');
+    console.log('Set to next track!');
   });
 
   $("#toggle").click(async function() {
     await player.togglePlay();
-    console.log('Toggled playback!');
+    paused = !paused;
+
+    toggleIcon(paused);
   });
 
 })();
