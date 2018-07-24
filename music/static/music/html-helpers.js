@@ -14,20 +14,19 @@ function capitalizeFirstLetter(string) {
 
 function getResultBlock(type, data) {
   let upper_type = capitalizeFirstLetter(type); 
-  return `
-  <div id="#${type}Results">
+  block = $(`<div id="#${type}Results"></div>`);
+  block.append(`
     <h2>
       ${upper_type} Results
     </h2>
-
-    ${data}
-  </div>
-  `;
+  `);
+  block.append(data);
+  return block;
 };
 
 function addToResults(type, builder, items) { 
-  let html = builder(items);
-  $("#searchResults").append(getResultBlock(type, html));
+  let htmlObj = builder(items);
+  $("#searchResults").append(getResultBlock(type, htmlObj));
 };
 
 function buildResults(search_response) {
@@ -53,7 +52,7 @@ function buildResults(search_response) {
 };
 
 function getAlbumsHTML(albums) {
-  var result = "";
+  var result = $("<div id='albumsResult'></div>");
 
   $.each(albums, function (i, album) {
     artist = album.artists[0].name;
@@ -61,8 +60,13 @@ function getAlbumsHTML(albums) {
     date = album.release_date;
     album_id = album.id;
 
-    result = result.concat(`
-     <h3 id="${album_id}" onclick="playAlbum(this.id)">${name}</h3>
+    container = $(`<div id="${album_id}"></div>`);
+    container.data("metadata", album);
+
+    header = $(`<h3 onclick="playAlbum($(this).closest('div').attr('id'))">${name}</h3>`);
+    container.append(header);
+
+    container.append(`
      <span>
        <p>
          ${artist}
@@ -72,6 +76,8 @@ function getAlbumsHTML(albums) {
        </p>
      </span>
    `);
+
+   result.append(container);
   });
 
   return result;
