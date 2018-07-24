@@ -1,8 +1,11 @@
+import json
 import requests
 from datetime import datetime, timedelta
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views import View
+
 from . import models
 from . import spotify
 
@@ -118,3 +121,21 @@ def get_token(request):
     request.session.set_expiry(int(resp_json['expires_in']))
 
     return redirect('/music')
+
+class ArtistView(View):
+
+    def post(self, request):
+        if request.body:
+            print(json.loads(request.body))
+
+class AlbumView(View):
+
+    def post(self, request):
+        if request.body:
+            print(json.loads(request.body))
+
+class SongView(View):
+
+    def post(self, request):
+        if request.body:
+            print(json.loads(request.body))
