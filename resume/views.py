@@ -5,12 +5,16 @@ from .models import Skill, Project, Education, Affiliation, Employment
 def index(request):
     return render(request, 'resume/index.html')
 
-def printable(request):
+def printable(request, tag=None):
+    kwargs = {}
+    if tag is not None:
+        kwargs['tags__name__in'] = [tag]
+
     skills = Skill.objects.all() 
-    projects = Project.objects.all()
+    projects = Project.objects.filter(**kwargs)
     educations = Education.objects.all()
-    affiliations = Affiliation.objects.all()
-    employments = Employment.objects.all()
+    affiliations = Affiliation.objects.filter(**kwargs)
+    employments = Employment.objects.filter(**kwargs)
 
     context = {
             'skills': skills, 

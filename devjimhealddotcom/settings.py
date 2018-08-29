@@ -58,11 +58,7 @@ INSTALLED_APPS = [
 
     # For Music
     'django_countries',
-
-    # For Django-CMS
-    # 'cms',
-    # 'menus',
-    # 'treebeard',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -109,8 +105,8 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devjimheald.com',
-        'USER': 'devjim-admin',
+        'NAME': secret.db, 
+        'USER': secret.user,
         'PASSWORD': secret.password,
         'HOST': '127.0.0.1',
         'PORT': '5432'

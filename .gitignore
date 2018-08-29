@@ -20,3 +20,6 @@ venv/
 
 # Spotify info
 music/spotify.py
+
+# VSCode
+.vscode
