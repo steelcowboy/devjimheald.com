@@ -40,23 +40,23 @@
     
     <div id="content">
       
-    <!-- Experience Section -->
+    <!-- Projects Section -->
       <div id="project" class="section">
         <h3 class="section-header"><i class="fa fa-code"></i> Projects</h3>
 
         {% for project in projects %}
             <div class="item-header">
-                <span class="project title">{{ project.name }}</span>
+                <span class="project title">{{ project.object.name }}</span>
                 {% if project.ongoing %}
-                    <span class="project duration">{{ project.start_date|date:"M Y" }} - Present</span>
+                    <span class="project duration">{{ project.object.start_date|date:"M Y" }} - Present</span>
                 {% else %}
-                    <span class="project duration">{{ project.start_date|date:"M Y" }} - {{ project.start_date|date:"M Y" }}</span>
+                    <span class="project duration">{{ project.object.start_date|date:"M Y" }} - {{ project.object.start_date|date:"M Y" }}</span>
                 {% endif %}
             </div>
 
             <div class="item-body">
                 <ul>
-                {% for point in project.projectpoint_set.all %} 
+                {% for point in project.points %} 
                     <li>
                         {{ point.text }}
                     </li>
@@ -72,17 +72,17 @@
         <h3 class="section-header"><i class="fa fa-briefcase"></i> Employment</h3>
         {% for employment in employments %}
             <div class="item-header">
-            <span class="employment title">{{ employment.name }}</span>
-            {% if employment.ongoing %}
-                <span class="employment duration">{{ employment.start_date|date:"M Y" }} - Present</span>
+            <span class="employment title">{{ employment.object.name }}</span>
+            {% if employment.object.ongoing %}
+                <span class="employment duration">{{ employment.object.start_date|date:"M Y" }} - Present</span>
             {% else %}
-                <span class="employment duration">{{ employment.start_date|date:"M Y" }} - {{ employment.end_date|date:"M Y" }}</span>
+                <span class="employment duration">{{ employment.object.start_date|date:"M Y" }} - {{ employment.object.end_date|date:"M Y" }}</span>
             {% endif %}
             </div>
 
             <div class="item-body">
                 <ul>
-                {% for point in employment.employmentpoint_set.all %} 
+                {% for point in employment.points %} 
                     <li>
                         {{ point.text }}
                     </li>
@@ -133,17 +133,17 @@
         <h3 class="section-header"><i class="fa fa-users"></i> Affiliations</h3>
         {% for affiliation in affiliations %}
             <div class="item-header">
-            <span class="affiliation title">{{ affiliation.name }}</span>
+            <span class="affiliation title">{{ affiliation.object.name }}</span>
             {% if affiliation.ongoing %}
-                <span class="affiliation duration">{{ affiliation.start_date|date:"M Y" }} - Present</span>
+                <span class="affiliation duration">{{ affiliation.object.start_date|date:"M Y" }} - Present</span>
             {% else %}
-                <span class="affiliation duration">{{ affiliation.start_date|date:"M Y" }} - {{ affiliation.start_date|date:"M Y" }}</span>
+                <span class="affiliation duration">{{ affiliation.object.start_date|date:"M Y" }} - {{ affiliation.object.start_date|date:"M Y" }}</span>
             {% endif %}
             </div>
 
             <div class="item-body">
                 <ul>
-                {% for point in affiliation.affiliationpoint_set.all %} 
+                {% for point in affiliation.points %} 
                     <li>
                         {{ point.text }}
                     </li>
