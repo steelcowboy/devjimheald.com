@@ -47,10 +47,10 @@
         {% for project in projects %}
             <div class="item-header">
                 <span class="project title">{{ project.object.name }}</span>
-                {% if project.ongoing %}
+                {% if project.object.ongoing %}
                     <span class="project duration">{{ project.object.start_date|date:"M Y" }} - Present</span>
                 {% else %}
-                    <span class="project duration">{{ project.object.start_date|date:"M Y" }} - {{ project.object.start_date|date:"M Y" }}</span>
+                    <span class="project duration">{{ project.object.start_date|date:"M Y" }} - {{ project.object.end_date|date:"M Y" }}</span>
                 {% endif %}
             </div>
 
@@ -103,7 +103,7 @@
                 {% if education.ongoing %}
                     <span class="education duration">{{ education.start_date|date:"M Y" }} - Present</span>
                 {% else %}
-                    <span class="education duration">{{ education.start_date|date:"M Y" }} - {{ education.start_date|date:"M Y" }}</span>
+                    <span class="education duration">{{ education.start_date|date:"M Y" }} - {{ education.end_date|date:"M Y" }}</span>
                 {% endif %}
             </div>
             
@@ -134,10 +134,10 @@
         {% for affiliation in affiliations %}
             <div class="item-header">
             <span class="affiliation title">{{ affiliation.object.name }}</span>
-            {% if affiliation.ongoing %}
+            {% if affiliation.object.ongoing %}
                 <span class="affiliation duration">{{ affiliation.object.start_date|date:"M Y" }} - Present</span>
             {% else %}
-                <span class="affiliation duration">{{ affiliation.object.start_date|date:"M Y" }} - {{ affiliation.object.start_date|date:"M Y" }}</span>
+                <span class="affiliation duration">{{ affiliation.object.start_date|date:"M Y" }} - {{ affiliation.object.end_date|date:"M Y" }}</span>
             {% endif %}
             </div>
 
