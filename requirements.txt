@@ -1,7 +1,7 @@
 beautifulsoup4==4.6.3
 certifi==2018.8.13
 chardet==3.0.4
-Django==2.1
+Django==2.1.11
 djangorestframework==3.8.2 
 django-admin-sortable==2.1.7
 django-blog-zinnia==0.20
