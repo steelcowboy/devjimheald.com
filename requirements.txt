@@ -22,4 +22,4 @@ markdown==2.6.11
 pytz==2018.5
 regex==2018.8.17
 requests==2.19.1
-urllib3==1.23
+urllib3==1.26.5
